@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class CombatUI : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class CombatUI : MonoBehaviour
     [Header("Deck")]
     public TextMeshProUGUI drawPileText;
     public TextMeshProUGUI discardPileText;
+
+    [Header("Hand")]
+    public Transform handPanel;
+    public GameObject cardPrefab;
+    public CombatManager combatManager;
 
     private void OnEnable()
     {
@@ -56,5 +62,21 @@ public class CombatUI : MonoBehaviour
         UpdatePlayerUI(context.player);
         UpdateEnemyUI(context.enemy);
         UpdateDeckUI(context.deck);
+        RefreshHand(context.deck.hand);
     }
+
+    private void RefreshHand(List<CardData> hand)
+{
+    // Destroy existing cards
+    foreach (Transform child in handPanel)
+        Destroy(child.gameObject);
+
+    // Create a card for each CardData in the hand
+    foreach (CardData cardData in hand)
+    {
+        GameObject cardGO = Instantiate(cardPrefab, handPanel);
+        CardView cardView = cardGO.GetComponent<CardView>();
+        cardView.Setup(cardData, (card) => combatManager.PlayCard(card));
+    }
+}
 }

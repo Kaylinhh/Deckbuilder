@@ -7,6 +7,8 @@ public class CardData : ScriptableObject
     public Sprite artwork;
     public int cost;
     public CardEffect[] effects;
+    [TextArea]
+    public string description;
 
     public void Play(CombatContext context)
     {

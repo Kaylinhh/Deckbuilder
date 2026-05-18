@@ -95,7 +95,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    private void PlayCard(CardData card)
+    public void PlayCard(CardData card)
     {
         if (player.currentPA < card.cost)
         {
