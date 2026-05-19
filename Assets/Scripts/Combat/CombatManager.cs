@@ -26,19 +26,6 @@ public class CombatManager : MonoBehaviour
         StartCombat();
     }
 
-    private void Update()
-    {
-    if (!_isOver && Keyboard.current.spaceKey.wasPressedThisFrame)
-        EndPlayerTurn();
-
-    if (!_isOver && Keyboard.current.enterKey.wasPressedThisFrame)
-    {
-        if (deckManager.hand.Count > 0)
-            PlayCard(deckManager.hand[0]);
-        Debug.Log($"Hand: {deckManager.hand.Count}, PA: {player.currentPA}, Enemy HP: {enemy.currentHP}");
-    }
-    }
-
     private void StartCombat()
     {
         deckManager.Shuffle(deckManager.drawPile);

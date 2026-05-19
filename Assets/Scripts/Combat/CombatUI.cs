@@ -48,7 +48,7 @@ public class CombatUI : MonoBehaviour
         enemyHPBar.maxValue = enemy.maxHP;
         enemyHPBar.value = enemy.currentHP;
         enemyBlockText.text = $"Block: {enemy.currentBlock}";
-        enemyIntentText.text = enemy.currentIntent.description;
+        enemyIntentText.text = $"Next round: {enemy.currentIntent.description}";
     }
 
     public void UpdateDeckUI(DeckManager deck)

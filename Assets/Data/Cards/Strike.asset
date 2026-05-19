@@ -17,3 +17,4 @@ MonoBehaviour:
   cost: 1
   effects:
   - {fileID: 11400000, guid: 661f7afffc50b864c960260a20de1624, type: 2}
+  description: Attack 8
