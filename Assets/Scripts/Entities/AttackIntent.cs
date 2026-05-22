@@ -7,6 +7,7 @@ public class AttackIntent : EnemyIntent
 
     public override void Execute(CombatContext context)
     {
-        context.player.TakeDamage(damage);
+        int modifiedDamage = context.enemy.GetModifiedDamage(damage);
+        context.player.TakeDamage(modifiedDamage);
     }
 }

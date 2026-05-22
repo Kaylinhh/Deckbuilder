@@ -57,6 +57,7 @@ public class CombatManager : MonoBehaviour
     {
         enemy.ResetBlock();
         ExecuteEnemyIntent();
+        enemy.TickStatuses();
         if (player.currentHP > 0)
             StartPlayerTurn();
     }

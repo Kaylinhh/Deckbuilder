@@ -671,6 +671,7 @@ MonoBehaviour:
   maxHP: 50
   currentHP: 50
   currentBlock: 0
+  activeStatuses: []
   maxAP: 3
   currentAP: 0
 --- !u!4 &474520978
@@ -2110,6 +2111,7 @@ MonoBehaviour:
   maxHP: 30
   currentHP: 30
   currentBlock: 0
+  activeStatuses: []
   pattern:
   - {fileID: 11400000, guid: 97f5abe6209c515468f3a7c113106b7c, type: 2}
   - {fileID: 11400000, guid: ca1487d79e958954c8b6eab152d8cc7a, type: 2}
@@ -2611,6 +2613,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ce0c79e30f9603242a693b86c65d2cbd, type: 2}
   - {fileID: 11400000, guid: ce0c79e30f9603242a693b86c65d2cbd, type: 2}
   - {fileID: 11400000, guid: ce0c79e30f9603242a693b86c65d2cbd, type: 2}
+  - {fileID: 11400000, guid: f78e0d5445c48c344b969162d857013e, type: 2}
   hand: []
   discardPile: []
 --- !u!114 &1132145662

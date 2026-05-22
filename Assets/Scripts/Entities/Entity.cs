@@ -1,10 +1,14 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 
 public class Entity : MonoBehaviour
 {
     public int maxHP;
     public int currentHP;
     public int currentBlock;
+
+    public List<StatusEffect> activeStatuses = new List<StatusEffect>();
 
     public void TakeDamage(int amount)
     {
@@ -24,5 +28,28 @@ public class Entity : MonoBehaviour
     public void ResetBlock()
     {
         currentBlock = 0;
+    }
+
+    public int GetModifiedDamage(int baseDamage)
+    {
+        int result = baseDamage;
+        foreach (StatusEffect status in activeStatuses)
+            result = status.ModifyOutgoingDamage(result);
+        return result;
+    }
+
+    public void ApplyStatus(StatusEffect status)
+    {
+        activeStatuses.Add(status);
+    }
+
+    public void TickStatuses()
+    {
+        for (int i = activeStatuses.Count - 1; i >= 0; i--)
+        {
+            activeStatuses[i].OnTurnEnd(this);
+            if (activeStatuses[i].duration <= 0)
+                activeStatuses.RemoveAt(i);
+        }
     }
 }
