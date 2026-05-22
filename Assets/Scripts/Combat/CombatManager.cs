@@ -9,6 +9,9 @@ public class CombatManager : MonoBehaviour
     public DeckManager deckManager;
 
     public static event Action<CombatContext> OnStateChanged;
+    public static event Action<bool> OnCombatEnded;
+    public static event Action OnNotEnoughAP;
+    
     public int cardsPerTurn = 5;
 
     private CombatContext _context;
@@ -36,9 +39,9 @@ public class CombatManager : MonoBehaviour
     public void StartPlayerTurn()
     {
         player.ResetBlock();
-        player.currentPA = player.maxPA;
+        player.currentAP = player.maxAP;
         deckManager.DrawCards(cardsPerTurn);
-        Debug.Log($"Player turn — PA: {player.currentPA}, Hand: {deckManager.hand.Count} cards");
+        Debug.Log($"Player turn — AP: {player.currentAP}, Hand: {deckManager.hand.Count} cards");
         OnStateChanged?.Invoke(_context);
     }
 
@@ -73,24 +76,26 @@ public class CombatManager : MonoBehaviour
         {
             Debug.Log("Defeat!");
             _isOver = true;
+            OnCombatEnded?.Invoke(false);
             return;
         }
         if (enemy.currentHP <= 0)
         {
             Debug.Log("Victory!");
             _isOver = true;
+            OnCombatEnded?.Invoke(true);
         }
     }
 
     public void PlayCard(CardData card)
     {
-        if (player.currentPA < card.cost)
+        if (player.currentAP < card.cost)
         {
-            Debug.Log("Not enough PA!");
+            OnNotEnoughAP?.Invoke();
             return;
         }
 
-        player.currentPA -= card.cost;
+        player.currentAP -= card.cost;
         card.Play(_context);
         deckManager.DiscardCard(card);
         CheckCombatEnd();

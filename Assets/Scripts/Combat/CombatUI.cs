@@ -3,13 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System.Collections;
 
 public class CombatUI : MonoBehaviour
 {
     [Header("Player")]
     public Slider playerHPBar;
     public TextMeshProUGUI playerBlockText;
-    public TextMeshProUGUI playerPAText;
+    public TextMeshProUGUI playerAPText;
 
     [Header("Enemy")]
     public Slider enemyHPBar;
@@ -25,14 +26,27 @@ public class CombatUI : MonoBehaviour
     public GameObject cardPrefab;
     public CombatManager combatManager;
 
+    [Header("End Combat")]
+    public GameObject blockerOverlay;
+    public GameObject combatEndPanel;
+    public TextMeshProUGUI resultText;
+    public TextMeshProUGUI buttonText;
+
+    [Header("Feedback")]
+    public TextMeshProUGUI notEnoughAPText;
+
     private void OnEnable()
     {
         CombatManager.OnStateChanged += Refresh; 
+        CombatManager.OnCombatEnded += HandleCombatEnd;
+        CombatManager.OnNotEnoughAP += HandleNotEnoughAP;
     }
 
     private void OnDisable()
     {
         CombatManager.OnStateChanged -= Refresh;  
+        CombatManager.OnCombatEnded -= HandleCombatEnd;
+        CombatManager.OnNotEnoughAP -= HandleNotEnoughAP;
     }
 
     public void UpdatePlayerUI(PlayerController player)
@@ -40,7 +54,8 @@ public class CombatUI : MonoBehaviour
         playerHPBar.maxValue = player.maxHP;
         playerHPBar.value = player.currentHP;
         playerBlockText.text = $"Block: {player.currentBlock}";
-        playerPAText.text = $"PA: {player.currentPA}/{player.maxPA}";
+        playerAPText.text = $"AP: {player.currentAP}/{player.maxAP}";
+        playerAPText.color = player.currentAP == 0 ? Color.red : Color.white;
     }
 
     public void UpdateEnemyUI(EnemyController enemy)
@@ -66,17 +81,37 @@ public class CombatUI : MonoBehaviour
     }
 
     private void RefreshHand(List<CardData> hand)
-{
-    // Destroy existing cards
-    foreach (Transform child in handPanel)
-        Destroy(child.gameObject);
-
-    // Create a card for each CardData in the hand
-    foreach (CardData cardData in hand)
     {
-        GameObject cardGO = Instantiate(cardPrefab, handPanel);
-        CardView cardView = cardGO.GetComponent<CardView>();
-        cardView.Setup(cardData, (card) => combatManager.PlayCard(card));
+        // Destroy existing cards
+        foreach (Transform child in handPanel)
+            Destroy(child.gameObject);
+
+        // Create a card for each CardData in the hand
+        foreach (CardData cardData in hand)
+        {
+            GameObject cardGO = Instantiate(cardPrefab, handPanel);
+            CardView cardView = cardGO.GetComponent<CardView>();
+            cardView.Setup(cardData, (card) => combatManager.PlayCard(card));
+        }
     }
-}
+
+    private void HandleCombatEnd(bool victory)
+    {
+        blockerOverlay.SetActive(true);
+        combatEndPanel.SetActive(true);
+        resultText.text = victory ? "Victory!" : "Defeat!";
+        buttonText.text = victory ? "Next" : "New Game";
+    }
+
+    public IEnumerator ShowNotEnoughAP()
+    {
+        notEnoughAPText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        notEnoughAPText.gameObject.SetActive(false);
+    }
+
+    private void HandleNotEnoughAP()
+    {
+        StartCoroutine(ShowNotEnoughAP());
+    }
 }
