@@ -12,4 +12,9 @@ public class WeakCardEffect : CardEffect
         instance.duration = duration;
         context.enemy.ApplyStatus(instance);
     }
+
+    public override string GetDescription(CombatContext context)
+    {
+        return $"Apply Weak for {duration} turns. Enemy deals 25% less damage.";
+    }
 }

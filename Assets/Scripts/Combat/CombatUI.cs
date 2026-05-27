@@ -11,11 +11,14 @@ public class CombatUI : MonoBehaviour
     public Slider playerHPBar;
     public TextMeshProUGUI playerBlockText;
     public TextMeshProUGUI playerAPText;
+    public TextMeshProUGUI playerHPText;
 
     [Header("Enemy")]
     public Slider enemyHPBar;
     public TextMeshProUGUI enemyBlockText;
     public TextMeshProUGUI enemyIntentText;
+    public TextMeshProUGUI enemyHPText;
+
 
     [Header("Deck")]
     public TextMeshProUGUI drawPileText;
@@ -56,14 +59,17 @@ public class CombatUI : MonoBehaviour
         playerBlockText.text = $"Block: {player.currentBlock}";
         playerAPText.text = $"AP: {player.currentAP}/{player.maxAP}";
         playerAPText.color = player.currentAP == 0 ? Color.red : Color.white;
+        playerHPText.text = $"HP: {player.currentHP}/{player.maxHP}";
     }
 
-    public void UpdateEnemyUI(EnemyController enemy)
+    public void UpdateEnemyUI(CombatContext context)
     {
+        EnemyController enemy = context.enemy;
         enemyHPBar.maxValue = enemy.maxHP;
         enemyHPBar.value = enemy.currentHP;
         enemyBlockText.text = $"Block: {enemy.currentBlock}";
-        enemyIntentText.text = $"Next round: {enemy.currentIntent.description}";
+        enemyIntentText.text = enemy.currentIntent.GetDescription(context);
+        enemyHPText.text = $"HP: {enemy.currentHP}/{enemy.maxHP}";
     }
 
     public void UpdateDeckUI(DeckManager deck)
@@ -75,13 +81,14 @@ public class CombatUI : MonoBehaviour
     private void Refresh(CombatContext context)
     {
         UpdatePlayerUI(context.player);
-        UpdateEnemyUI(context.enemy);
+        UpdateEnemyUI(context);
         UpdateDeckUI(context.deck);
-        RefreshHand(context.deck.hand);
+        RefreshHand(context);
     }
 
-    private void RefreshHand(List<CardData> hand)
+    private void RefreshHand(CombatContext context)
     {
+        List<CardData> hand = context.deck.hand;
         // Destroy existing cards
         foreach (Transform child in handPanel)
             Destroy(child.gameObject);
@@ -91,8 +98,8 @@ public class CombatUI : MonoBehaviour
         {
             GameObject cardGO = Instantiate(cardPrefab, handPanel);
             CardView cardView = cardGO.GetComponent<CardView>();
-            cardView.Setup(cardData, (card) => combatManager.PlayCard(card));
-        }
+            cardView.Setup(cardData, context, (card) => combatManager.PlayCard(card));        
+            }
     }
 
     private void HandleCombatEnd(bool victory)

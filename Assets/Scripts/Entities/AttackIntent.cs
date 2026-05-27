@@ -10,4 +10,10 @@ public class AttackIntent : EnemyIntent
         int modifiedDamage = context.enemy.GetModifiedDamage(damage);
         context.player.TakeDamage(modifiedDamage);
     }
+
+    public override string GetDescription(CombatContext context)
+    {
+        int modifiedDamage = context.enemy.GetModifiedDamage(damage);
+        return $"Attack {modifiedDamage}";
+    }
 }

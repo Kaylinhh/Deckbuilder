@@ -9,4 +9,9 @@ public class BlockIntent : EnemyIntent
     {
         context.enemy.GainBlock(block);
     }
+
+    public override string GetDescription(CombatContext context)
+    {
+        return $"Block {block}";
+    }
 }

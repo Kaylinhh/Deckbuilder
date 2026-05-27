@@ -47,6 +47,7 @@ public class CombatManager : MonoBehaviour
 
     public void EndPlayerTurn()
     {
+        player.TickStatuses();
         deckManager.DiscardHand();
         CheckCombatEnd();
         if (enemy.currentHP > 0)

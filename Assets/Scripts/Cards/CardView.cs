@@ -11,12 +11,12 @@ public class CardView : MonoBehaviour
 
     private CardData _cardData;
 
-    public void Setup(CardData cardData, System.Action<CardData> onPlay)
+    public void Setup(CardData cardData, CombatContext context,System.Action<CardData> onPlay)
     {
         _cardData = cardData;
         cardNameText.text = cardData.cardName;
         costText.text = cardData.cost.ToString();
-        descriptionText.text = cardData.description;
+        descriptionText.text = cardData.GetFullDescription(context);        
         button.onClick.AddListener(() => onPlay(_cardData));
     }
 

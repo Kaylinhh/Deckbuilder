@@ -4,8 +4,14 @@ using UnityEngine;
 public class BlockEffect : CardEffect
 {
     public int block;
+
     public override void Execute(CombatContext context)
     {
         context.player.GainBlock(block);
+    }
+    
+    public override string GetDescription(CombatContext context)
+    {
+        return $"Gain {block} Block.";
     }
 }

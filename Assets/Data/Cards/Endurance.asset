@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ae7c4d8e2fcecc4892efdf435568ac7, type: 3}
-  m_Name: Strike
+  m_Name: Endurance
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Strike
+  cardName: Endurance
   artwork: {fileID: 0}
-  cost: 1
+  cost: 2
   effects:
-  - {fileID: 11400000, guid: 661f7afffc50b864c960260a20de1624, type: 2}
-  description: Attack 6
+  - {fileID: 11400000, guid: c948887a8b2ad674aa57899e60481e80, type: 2}
+  - {fileID: 11400000, guid: 9628ceecf08052c4eb14a2e77ddf4e60, type: 2}
+  description: Block 8, Heal 2

@@ -17,4 +17,12 @@ public class CardData : ScriptableObject
             effect.Execute(context);
         }
     }
+
+    public string GetFullDescription(CombatContext context)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        foreach (CardEffect effect in effects)
+            sb.AppendLine(effect.GetDescription(context));
+        return sb.ToString().TrimEnd();
+    }
 }

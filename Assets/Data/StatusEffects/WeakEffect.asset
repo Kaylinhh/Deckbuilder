@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794ead75eebad36468e8dd25b5deac9c, type: 3}
   m_Name: WeakEffect
   m_EditorClassIdentifier: Assembly-CSharp::WeakEffect
-  statusName: 
+  statusName: Weak
   icon: {fileID: 0}
   duration: 0
   damageMultiplier: 0.75

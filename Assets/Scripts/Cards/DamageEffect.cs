@@ -4,8 +4,17 @@ using UnityEngine;
 public class DamageEffect : CardEffect
 {
     public int damage;
+
     public override void Execute(CombatContext context)
     {
-        context.enemy.TakeDamage(damage);
+        int modifiedDamage = context.player.GetModifiedDamage(damage);
+        context.enemy.TakeDamage(modifiedDamage);
+    }
+
+    public override string GetDescription(CombatContext context)
+    {
+        int modifiedDamage = context.player.GetModifiedDamage(damage);
+        string color = modifiedDamage > damage ? "green" : "black";
+        return $"Deal <color={color}>{modifiedDamage}</color> damage.";
     }
 }
