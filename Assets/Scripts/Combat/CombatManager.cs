@@ -65,9 +65,7 @@ public class CombatManager : MonoBehaviour
 
     private void ExecuteEnemyIntent()
     {
-        Debug.Log($"Enemy uses: {enemy.currentIntent.description} — Player HP: {player.currentHP}");
         enemy.ExecuteIntent(_context);
-        Debug.Log($"Player HP after: {player.currentHP}");
         CheckCombatEnd();
         OnStateChanged?.Invoke(_context);
     }

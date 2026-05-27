@@ -65,10 +65,11 @@ public class CombatUI : MonoBehaviour
     public void UpdateEnemyUI(CombatContext context)
     {
         EnemyController enemy = context.enemy;
+
         enemyHPBar.maxValue = enemy.maxHP;
         enemyHPBar.value = enemy.currentHP;
         enemyBlockText.text = $"Block: {enemy.currentBlock}";
-        enemyIntentText.text = enemy.currentIntent.GetDescription(context);
+        enemyIntentText.text = enemy.GetIntentDescription(context);
         enemyHPText.text = $"HP: {enemy.currentHP}/{enemy.maxHP}";
     }
 

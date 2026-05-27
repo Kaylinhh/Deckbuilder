@@ -12,4 +12,9 @@ public class HealEffect : CardEffect
             context.player.maxHP
         );
     }
+
+    public override string GetDescription(CombatContext context)
+    {
+        return $"Heal {healAmount} HP.";
+    }
 }
