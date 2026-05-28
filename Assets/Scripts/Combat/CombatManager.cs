@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,7 +18,7 @@ public class CombatManager : MonoBehaviour
     private CombatContext _context;
     private bool _isOver = false;
 
-    private void Start()
+    private void Awake()
     {
         _context = new CombatContext
         {
@@ -25,23 +26,27 @@ public class CombatManager : MonoBehaviour
             enemy = enemy,
             deck = deckManager
         };
+    }
 
+    private void Start()
+    {
+        Debug.Log($"CombatManager.Start — GameManager deck: {GameManager.Instance.deck.Count}");
         StartCombat();
     }
 
     private void StartCombat()
     {
+        player.maxHP = GameManager.Instance.maxHP;
+        player.currentHP = GameManager.Instance.currentHP;
+        deckManager.drawPile = new List<CardData>(GameManager.Instance.deck);
         deckManager.Shuffle(deckManager.drawPile);
-        Debug.Log("Combat started!");
         StartPlayerTurn();
     }
-
     public void StartPlayerTurn()
     {
         player.ResetBlock();
         player.currentAP = player.maxAP;
         deckManager.DrawCards(cardsPerTurn);
-        Debug.Log($"Player turn — AP: {player.currentAP}, Hand: {deckManager.hand.Count} cards");
         OnStateChanged?.Invoke(_context);
     }
 
@@ -74,15 +79,16 @@ public class CombatManager : MonoBehaviour
     {
         if (player.currentHP <= 0)
         {
-            Debug.Log("Defeat!");
             _isOver = true;
+            GameManager.Instance.LoseCombat();
             OnCombatEnded?.Invoke(false);
             return;
         }
         if (enemy.currentHP <= 0)
         {
-            Debug.Log("Victory!");
             _isOver = true;
+            GameManager.Instance.currentHP = player.currentHP;
+            GameManager.Instance.WinCombat();
             OnCombatEnded?.Invoke(true);
         }
     }

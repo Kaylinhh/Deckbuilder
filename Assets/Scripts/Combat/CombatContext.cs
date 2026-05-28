@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class CombatContext : MonoBehaviour
+public class CombatContext
 {
     public PlayerController player;
     public EnemyController enemy;

@@ -2749,17 +2749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b538e2ea8ffc94083399b19ba65c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeckManager
-  drawPile:
-  - {fileID: 11400000, guid: f23997f747054e04b9cfa4595c44d4a6, type: 2}
-  - {fileID: 11400000, guid: f23997f747054e04b9cfa4595c44d4a6, type: 2}
-  - {fileID: 11400000, guid: f23997f747054e04b9cfa4595c44d4a6, type: 2}
-  - {fileID: 11400000, guid: ce0c79e30f9603242a693b86c65d2cbd, type: 2}
-  - {fileID: 11400000, guid: ce0c79e30f9603242a693b86c65d2cbd, type: 2}
-  - {fileID: 11400000, guid: ce0c79e30f9603242a693b86c65d2cbd, type: 2}
-  - {fileID: 11400000, guid: f78e0d5445c48c344b969162d857013e, type: 2}
-  - {fileID: 11400000, guid: 8f1a8173896d449458c1bfa8eb7eef8b, type: 2}
-  - {fileID: 11400000, guid: 9ba0edd86fb5d7e409d792c5aaca5d53, type: 2}
-  - {fileID: 11400000, guid: 36540cfc24a614844aa8687852127297, type: 2}
+  drawPile: []
   hand: []
   discardPile: []
 --- !u!114 &1132145662
@@ -4660,6 +4650,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041592474}
   m_CullTransparentMesh: 1
+--- !u!1 &2060523401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2060523403}
+  - component: {fileID: 2060523402}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2060523402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060523401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63bafd020c870204593db44d57192773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  currentHP: 0
+  maxHP: 75
+  deck: []
+  currentCombatIndex: 0
+  isRunActive: 0
+  startingDeck:
+  - {fileID: 11400000, guid: f23997f747054e04b9cfa4595c44d4a6, type: 2}
+  - {fileID: 11400000, guid: f23997f747054e04b9cfa4595c44d4a6, type: 2}
+  - {fileID: 11400000, guid: f23997f747054e04b9cfa4595c44d4a6, type: 2}
+  - {fileID: 11400000, guid: ce0c79e30f9603242a693b86c65d2cbd, type: 2}
+  - {fileID: 11400000, guid: ce0c79e30f9603242a693b86c65d2cbd, type: 2}
+  - {fileID: 11400000, guid: ce0c79e30f9603242a693b86c65d2cbd, type: 2}
+  - {fileID: 11400000, guid: 8f1a8173896d449458c1bfa8eb7eef8b, type: 2}
+  - {fileID: 11400000, guid: f78e0d5445c48c344b969162d857013e, type: 2}
+  - {fileID: 11400000, guid: 36540cfc24a614844aa8687852127297, type: 2}
+  - {fileID: 11400000, guid: 9ba0edd86fb5d7e409d792c5aaca5d53, type: 2}
+--- !u!4 &2060523403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060523401}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1642.0154, y: 315.89032, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2088853713
 GameObject:
   m_ObjectHideFlags: 0
@@ -4954,8 +5004,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 2060523403}
+  - {fileID: 1132145663}
   - {fileID: 474520978}
   - {fileID: 902006423}
   - {fileID: 1290871063}
-  - {fileID: 1132145663}
   - {fileID: 1565985320}
