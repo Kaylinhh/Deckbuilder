@@ -54,7 +54,6 @@ public class CombatUI : MonoBehaviour
 
     public void UpdatePlayerUI(PlayerController player)
     {
-        Debug.Log($"UpdatePlayerUI — currentHP: {player.currentHP}, maxHP: {player.maxHP}, slider max: {playerHPBar.maxValue}");
         playerHPBar.maxValue = player.maxHP;
         playerHPBar.value = player.currentHP;
         playerBlockText.text = $"Block: {player.currentBlock}";

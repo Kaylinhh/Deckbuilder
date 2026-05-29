@@ -8,7 +8,7 @@ public class CombatManager : MonoBehaviour
     public PlayerController player;
     public EnemyController enemy;
     public DeckManager deckManager;
-
+    public Transform enemySpawnPoint;
     public static event Action<CombatContext> OnStateChanged;
     public static event Action<bool> OnCombatEnded;
     public static event Action OnNotEnoughAP;
@@ -26,22 +26,53 @@ public class CombatManager : MonoBehaviour
             enemy = enemy,
             deck = deckManager
         };
+        GameManager.OnCombatShown += InitCombat;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnCombatShown -= InitCombat;
+    }
+
+    private void InitCombat()
+    {
+        _isOver = false;
+        deckManager.hand.Clear();
+        deckManager.discardPile.Clear();
+        deckManager.drawPile.Clear();
+        StartCombat();
     }
 
     private void Start()
     {
-        Debug.Log($"CombatManager.Start — GameManager deck: {GameManager.Instance.deck.Count}");
-        StartCombat();
+        InitCombat();
     }
 
     private void StartCombat()
     {
+        GameObject prefab = GameManager.Instance.currentEnemyPrefab;
+        Debug.Log($"StartCombat — prefab: {prefab}");
+        if (prefab == null) return;
+
+        if (enemy != null)
+            Destroy(enemy.gameObject);
+
+        GameObject enemyGO = Instantiate(
+            prefab,
+            enemySpawnPoint.position,
+            Quaternion.identity,
+            enemySpawnPoint.transform
+        );
+        enemy = enemyGO.GetComponent<EnemyController>();
+        _context.enemy = enemy;
+
         player.maxHP = GameManager.Instance.maxHP;
         player.currentHP = GameManager.Instance.currentHP;
         deckManager.drawPile = new List<CardData>(GameManager.Instance.deck);
         deckManager.Shuffle(deckManager.drawPile);
         StartPlayerTurn();
     }
+
     public void StartPlayerTurn()
     {
         player.ResetBlock();
