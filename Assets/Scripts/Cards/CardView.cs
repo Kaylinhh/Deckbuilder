@@ -17,7 +17,11 @@ public class CardView : MonoBehaviour
         cardNameText.text = cardData.cardName;
         costText.text = cardData.cost.ToString();
         descriptionText.text = cardData.GetFullDescription(context);        
-        button.onClick.AddListener(() => onPlay(_cardData));
+        button.onClick.RemoveAllListeners();
+        if (onPlay == null)
+            button.interactable = false;
+        else
+            button.onClick.AddListener(() => onPlay(_cardData));
     }
 
     private void OnDestroy()

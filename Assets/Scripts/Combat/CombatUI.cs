@@ -28,6 +28,9 @@ public class CombatUI : MonoBehaviour
     public Transform enemyStatusContainer;
 
     [Header("Deck")]
+    public DeckViewManager deckViewManager;
+    public Button drawPileButton;
+    public Button discardPileButton;
     public TextMeshProUGUI drawPileText;
     public TextMeshProUGUI discardPileText;
 
@@ -47,6 +50,19 @@ public class CombatUI : MonoBehaviour
     public TextMeshProUGUI notEnoughAPText;
 
     private CombatContext _context;
+
+
+    private void Start()
+    {
+        drawPileButton.onClick.AddListener(() => 
+        {
+            Debug.Log($"Draw pile clicked — context: {_context}");
+            deckViewManager.Show(_context.deck.drawPile, "Draw Pile", _context, shuffle: true);
+});
+
+        discardPileButton.onClick.AddListener(() => 
+            deckViewManager.Show(_context.deck.discardPile, "Discard Pile", _context));
+    }
 
     private void OnEnable()
     {
