@@ -92,6 +92,7 @@ MonoBehaviour:
   currentHP: 80
   currentBlock: 0
   activeStatuses: []
+  enemyName: The Emperor
   phase1Pattern:
   - intents:
     - {fileID: 11400000, guid: d5d05917176107545a445dd4aa91196b, type: 2}

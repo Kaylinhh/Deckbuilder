@@ -92,6 +92,7 @@ MonoBehaviour:
   currentHP: 45
   currentBlock: 0
   activeStatuses: []
+  enemyName: Knight of Pentacles
   phase1Pattern:
   - intents:
     - {fileID: 11400000, guid: 54f6b0610feabde4b8c266b34ba17d4b, type: 2}

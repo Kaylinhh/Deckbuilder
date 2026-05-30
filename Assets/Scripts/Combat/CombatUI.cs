@@ -20,6 +20,7 @@ public class CombatUI : MonoBehaviour
     public TextMeshProUGUI enemyHPText;
     public GameObject enemyBlockIcon;
     public TextMeshProUGUI enemyBlockValueText;
+    public TextMeshProUGUI enemyNameText;
 
 
     [Header("Status Icons")]
@@ -126,6 +127,9 @@ public class CombatUI : MonoBehaviour
         foreach (EnemyIntent intent in enemy.CurrentSlot.intents)
             SpawnStatusIcon(enemyIntentContainer, intent.icon, intent.GetValue(context), intent.GetTooltip());
 
+        // Enemy Name
+        enemyNameText.text = enemy.enemyName;
+
         // Block
         enemyBlockIcon.SetActive(enemy.currentBlock > 0);
         enemyBlockValueText.text = enemy.currentBlock.ToString();
@@ -168,16 +172,27 @@ public class CombatUI : MonoBehaviour
         }
     }
 
-    private void HandleCombatEnd(bool victory)
+    private void HandleCombatEnd(bool victory, bool isBoss)
     {
+        if (!victory)
+        {
+            blockerOverlay.SetActive(true);
+            combatEndPanel.SetActive(true);
+            resultText.text = "Defeat!";
+            defeatPanel.SetActive(true);
+            return;
+        }
+        
+        if (isBoss)
+        {
+            GameManager.Instance.WinRun();
+            return;
+        }
+        
         blockerOverlay.SetActive(true);
         combatEndPanel.SetActive(true);
-        resultText.text = victory ? "Victory!" : "Defeat!";
-
-            if (victory)
+        resultText.text = "Victory!";
         draftManager.ShowDraft(_context);
-    else
-        defeatPanel.SetActive(true);
     }
 
     public IEnumerator ShowNotEnoughAP()

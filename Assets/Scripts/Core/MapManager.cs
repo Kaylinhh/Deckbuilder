@@ -6,7 +6,8 @@ using System.Collections;
 public enum NodeType
 {
     Combat,
-    Campfire
+    Campfire,
+    Boss
 }
 
 [System.Serializable]
@@ -107,7 +108,7 @@ public class MapManager : MonoBehaviour
         else
         {
             GameManager.Instance.currentEnemyPrefab = nodes[index].enemyPrefab;
-            GameManager.Instance.ShowCombat();
+            GameManager.Instance.ShowCombat(nodes[index].type == NodeType.Boss);
         }
     }
 

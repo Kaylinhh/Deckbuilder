@@ -92,6 +92,7 @@ MonoBehaviour:
   currentHP: 30
   currentBlock: 0
   activeStatuses: []
+  enemyName: 4 of Swords
   phase1Pattern:
   - intents:
     - {fileID: 11400000, guid: 54f6b0610feabde4b8c266b34ba17d4b, type: 2}

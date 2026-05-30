@@ -12,7 +12,7 @@ public class BlockIntent : EnemyIntent
 
     public override string GetTooltip()
     {
-        return $"Gains {block} block next turn";
+        return $"Will block next turn";
     }
 
     public override string GetValue(CombatContext context)

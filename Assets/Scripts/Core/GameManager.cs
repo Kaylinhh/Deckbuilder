@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public static event Action OnMapShown;
     public static event Action OnCombatShown;
+    public bool _currentCombatIsBoss = false;
 
 
     [Header("Run State")]
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject mapPanel;
     public GameObject combatPanel;
     public GameObject combatEndPanel;
+    public GameObject winPanel;
     public GameObject blockerOverlay;
 
     [Header("Enemies")]
@@ -46,10 +49,12 @@ public class GameManager : MonoBehaviour
         deck = new List<CardData>(startingDeck);
     }
 
-    public void WinCombat()
+    public void WinCombat(bool isBoss = false)
     {
-        currentCombatIndex++;
-        Debug.Log($"WinCombat — new index: {currentCombatIndex}");
+        if (isBoss)
+            WinRun();
+        else
+            currentCombatIndex++;
     }
 
     public void LoseCombat()
@@ -65,10 +70,24 @@ public class GameManager : MonoBehaviour
         combatPanel.SetActive(false);
         OnMapShown?.Invoke();
     }
-    public void ShowCombat()
+
+    public void ShowCombat(bool isBoss = false)
     {
+        _currentCombatIsBoss = isBoss;
         mapPanel.SetActive(false);
         combatPanel.SetActive(true);
         OnCombatShown?.Invoke();
+    }
+
+    public void WinRun()
+    {
+        isRunActive = false;
+        winPanel.SetActive(true);
+        blockerOverlay.SetActive(true);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
     }
 }

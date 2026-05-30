@@ -17,7 +17,7 @@ public class AttackIntent : EnemyIntent
 
     public override string GetTooltip()
     {
-        return $"Deals {damage} damage{(hits > 1 ? $" {hits} times" : "")} next turn";
+        return $"Will attack next turn";
     }
 
     public override string GetValue(CombatContext context)

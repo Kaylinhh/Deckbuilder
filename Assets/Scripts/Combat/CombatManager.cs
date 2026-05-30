@@ -10,7 +10,7 @@ public class CombatManager : MonoBehaviour
     public DeckManager deckManager;
     public Transform enemySpawnPoint;
     public static event Action<CombatContext> OnStateChanged;
-    public static event Action<bool> OnCombatEnded;
+    public static event Action<bool, bool> OnCombatEnded; 
     public static event Action OnNotEnoughAP;
     
     public int cardsPerTurn = 5;
@@ -113,7 +113,7 @@ public class CombatManager : MonoBehaviour
         {
             _isOver = true;
             GameManager.Instance.LoseCombat();
-            OnCombatEnded?.Invoke(false);
+            OnCombatEnded?.Invoke(false, false);
             return;
         }
         if (enemy.currentHP <= 0)
@@ -121,7 +121,7 @@ public class CombatManager : MonoBehaviour
             _isOver = true;
             GameManager.Instance.currentHP = player.currentHP;
             GameManager.Instance.WinCombat();
-            OnCombatEnded?.Invoke(true);
+            OnCombatEnded?.Invoke(true, GameManager.Instance._currentCombatIsBoss);
         }
     }
 

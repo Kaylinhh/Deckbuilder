@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyController : Entity
 {
+    public string enemyName;
     public IntentSlot[] phase1Pattern;
     public IntentSlot[] phase2Pattern;
 
