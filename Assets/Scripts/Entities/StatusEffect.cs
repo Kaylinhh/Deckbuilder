@@ -12,4 +12,9 @@ public abstract class StatusEffect : ScriptableObject
     {
         return damage;
     }
+
+    public virtual string GetTooltip()
+    {
+        return statusName;;
+    }
 }

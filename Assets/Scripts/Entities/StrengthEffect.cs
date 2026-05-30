@@ -14,4 +14,9 @@ public class StrengthEffect : StatusEffect
     {
         duration--;
     }
+
+    public override string GetTooltip()
+    {
+        return $"Strength: deals +{bonusDamage} damage per attack.";
+    }
 }

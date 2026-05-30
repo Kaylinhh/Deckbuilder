@@ -7,8 +7,13 @@ public abstract class EnemyIntent : ScriptableObject
 
     public abstract void Execute(CombatContext context);
 
-    public virtual string GetDescription(CombatContext context)
+    public virtual string GetTooltip()
     {
         return description;
+    }
+
+    public virtual string GetValue(CombatContext context)
+    {
+        return "";
     }
 }

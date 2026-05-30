@@ -40,6 +40,7 @@ public class CombatManager : MonoBehaviour
         deckManager.hand.Clear();
         deckManager.discardPile.Clear();
         deckManager.drawPile.Clear();
+        player.activeStatuses.Clear();
         StartCombat();
     }
 
@@ -51,7 +52,6 @@ public class CombatManager : MonoBehaviour
     private void StartCombat()
     {
         GameObject prefab = GameManager.Instance.currentEnemyPrefab;
-        Debug.Log($"StartCombat — prefab: {prefab}");
         if (prefab == null) return;
 
         if (enemy != null)
@@ -65,6 +65,7 @@ public class CombatManager : MonoBehaviour
         );
         enemy = enemyGO.GetComponent<EnemyController>();
         _context.enemy = enemy;
+        enemy.activeStatuses.Clear();
 
         player.maxHP = GameManager.Instance.maxHP;
         player.currentHP = GameManager.Instance.currentHP;

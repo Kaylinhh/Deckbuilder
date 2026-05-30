@@ -28,6 +28,9 @@ public class MapManager : MonoBehaviour
     public Color completedColor = Color.green;
     public Color currentColor = Color.white;
 
+    [Header("Feedback")]
+    public TextMeshProUGUI campfireText;
+
         private void Awake()
     {
         GameManager.OnMapShown += HandleMapShown;
@@ -86,18 +89,19 @@ public class MapManager : MonoBehaviour
         }
     }
 
-        public void OnNodeClicked(int index)
+    public void OnNodeClicked(int index)
     {
         MapNode node = nodes[index];
         
         if (node.type == NodeType.Campfire)
         {
-            int healAmount = Mathf.RoundToInt(GameManager.Instance.maxHP * 0.2f);
+            int healAmount = Mathf.RoundToInt(GameManager.Instance.maxHP * 0.3f);
             GameManager.Instance.currentHP = Mathf.Min(
                 GameManager.Instance.currentHP + healAmount,
                 GameManager.Instance.maxHP
             );
             GameManager.Instance.WinCombat();
+            StartCoroutine(ShowCampfireText(healAmount));
             RefreshMap();
         }
         else
@@ -105,5 +109,13 @@ public class MapManager : MonoBehaviour
             GameManager.Instance.currentEnemyPrefab = nodes[index].enemyPrefab;
             GameManager.Instance.ShowCombat();
         }
+    }
+
+    private IEnumerator ShowCampfireText(int healAmount)
+    {
+        campfireText.text = $"Rested! +{healAmount} HP";
+        campfireText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        campfireText.gameObject.SetActive(false);
     }
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BlockIntent_8
   m_EditorClassIdentifier: Assembly-CSharp::BlockIntent
   description: Block
-  icon: {fileID: 0}
+  icon: {fileID: -2135585597343286014, guid: 4334d6208f7b35c41a0fcdd73004861d, type: 3}
   block: 8

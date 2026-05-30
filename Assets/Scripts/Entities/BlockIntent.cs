@@ -10,8 +10,13 @@ public class BlockIntent : EnemyIntent
         context.enemy.GainBlock(block);
     }
 
-    public override string GetDescription(CombatContext context)
+    public override string GetTooltip()
     {
-        return $"Block {block}";
+        return $"Gains {block} block next turn";
+    }
+
+    public override string GetValue(CombatContext context)
+    {
+        return block.ToString();
     }
 }

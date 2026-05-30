@@ -15,11 +15,16 @@ public class AttackIntent : EnemyIntent
         }
     }
 
-    public override string GetDescription(CombatContext context)
+    public override string GetTooltip()
+    {
+        return $"Deals {damage} damage{(hits > 1 ? $" {hits} times" : "")} next turn";
+    }
+
+    public override string GetValue(CombatContext context)
     {
         int modifiedDamage = context.enemy.GetModifiedDamage(damage);
         if (hits > 1)
-            return $"Attack {hits}x{modifiedDamage}";
-        return $"Attack {modifiedDamage}";
+            return $"{hits}x{modifiedDamage}";
+        return modifiedDamage.ToString();
     }
 }

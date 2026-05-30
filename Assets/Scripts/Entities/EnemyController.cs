@@ -37,15 +37,4 @@ public class EnemyController : Entity
         _currentIntentIndex = (_currentIntentIndex + 1) % CurrentPattern.Length;
     }
 
-    public string GetIntentDescription(CombatContext context)
-    {
-        string result = "";
-        foreach (EnemyIntent intent in CurrentSlot.intents)
-        {
-            if (result != "")
-                result += " / ";
-            result += intent.GetDescription(context);
-        }
-        return result;
-    }
 }

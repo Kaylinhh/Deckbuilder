@@ -14,4 +14,9 @@ public class WeakEffect : StatusEffect
     {
         duration--;
     }
+
+    public override string GetTooltip()
+    {
+        return "Weak: deals 25% less damage.";
+    }
 }

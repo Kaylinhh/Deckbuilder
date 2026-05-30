@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: StrengthEffect
   m_EditorClassIdentifier: Assembly-CSharp::StrengthEffect
   statusName: Strength
-  icon: {fileID: 0}
+  icon: {fileID: 7482667652216324306, guid: 682d58c19d9c7484a98b37500f238827, type: 3}
   duration: 0
   bonusDamage: 2
