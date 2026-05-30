@@ -40,7 +40,11 @@ public class Entity : MonoBehaviour
 
     public void ApplyStatus(StatusEffect status)
     {
-        activeStatuses.Add(status);
+        StatusEffect existing = activeStatuses.Find(s => s.GetType() == status.GetType());
+        if (existing != null)
+            existing.duration += status.duration;
+        else
+            activeStatuses.Add(status);
     }
 
     public void TickStatuses()

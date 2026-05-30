@@ -33,10 +33,13 @@ public class CombatUI : MonoBehaviour
     public GameObject blockerOverlay;
     public GameObject combatEndPanel;
     public TextMeshProUGUI resultText;
-    public TextMeshProUGUI buttonText;
+    public DraftManager draftManager;
+    public GameObject defeatPanel;
 
     [Header("Feedback")]
     public TextMeshProUGUI notEnoughAPText;
+
+    private CombatContext _context;
 
     private void OnEnable()
     {
@@ -81,6 +84,7 @@ public class CombatUI : MonoBehaviour
 
     private void Refresh(CombatContext context)
     {
+        _context = context;
         UpdatePlayerUI(context.player);
         UpdateEnemyUI(context);
         UpdateDeckUI(context.deck);
@@ -100,7 +104,7 @@ public class CombatUI : MonoBehaviour
             GameObject cardGO = Instantiate(cardPrefab, handPanel);
             CardView cardView = cardGO.GetComponent<CardView>();
             cardView.Setup(cardData, context, (card) => combatManager.PlayCard(card));        
-            }
+        }
     }
 
     private void HandleCombatEnd(bool victory)
@@ -108,7 +112,11 @@ public class CombatUI : MonoBehaviour
         blockerOverlay.SetActive(true);
         combatEndPanel.SetActive(true);
         resultText.text = victory ? "Victory!" : "Defeat!";
-        buttonText.text = victory ? "Next" : "New Game";
+
+            if (victory)
+        draftManager.ShowDraft(_context);
+    else
+        defeatPanel.SetActive(true);
     }
 
     public IEnumerator ShowNotEnoughAP()
