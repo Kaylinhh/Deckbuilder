@@ -3864,6 +3864,7 @@ GameObject:
   - component: {fileID: 742751197}
   - component: {fileID: 742751196}
   - component: {fileID: 742751195}
+  - component: {fileID: 742751198}
   m_Layer: 5
   m_Name: Button_2
   m_TagString: Untagged
@@ -3985,6 +3986,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742751193}
   m_CullTransparentMesh: 1
+--- !u!114 &742751198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742751193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977cc17d19ce78458137b7942626858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TooltipTrigger
+  content: Elite
 --- !u!1 &790079258
 GameObject:
   m_ObjectHideFlags: 0
@@ -5806,6 +5820,7 @@ GameObject:
   - component: {fileID: 1216312643}
   - component: {fileID: 1216312642}
   - component: {fileID: 1216312641}
+  - component: {fileID: 1216312644}
   m_Layer: 5
   m_Name: Button_1
   m_TagString: Untagged
@@ -5927,6 +5942,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216312639}
   m_CullTransparentMesh: 1
+--- !u!114 &1216312644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216312639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977cc17d19ce78458137b7942626858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TooltipTrigger
+  content: Enemy
 --- !u!1 &1217802145
 GameObject:
   m_ObjectHideFlags: 0
@@ -7334,6 +7362,7 @@ GameObject:
   - component: {fileID: 1406232147}
   - component: {fileID: 1406232146}
   - component: {fileID: 1406232145}
+  - component: {fileID: 1406232148}
   m_Layer: 5
   m_Name: Button_4
   m_TagString: Untagged
@@ -7455,6 +7484,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406232143}
   m_CullTransparentMesh: 1
+--- !u!114 &1406232148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406232143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977cc17d19ce78458137b7942626858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TooltipTrigger
+  content: Boss
 --- !u!1 &1440579507
 GameObject:
   m_ObjectHideFlags: 0
@@ -10069,6 +10111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bafd020c870204593db44d57192773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  _currentCombatIsBoss: 0
   currentHP: 0
   maxHP: 75
   deck: []
@@ -10154,6 +10197,7 @@ GameObject:
   - component: {fileID: 2079550725}
   - component: {fileID: 2079550724}
   - component: {fileID: 2079550723}
+  - component: {fileID: 2079550726}
   m_Layer: 5
   m_Name: Button_0
   m_TagString: Untagged
@@ -10275,6 +10319,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079550721}
   m_CullTransparentMesh: 1
+--- !u!114 &2079550726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079550721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977cc17d19ce78458137b7942626858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TooltipTrigger
+  content: Enemy
 --- !u!1 &2088853713
 GameObject:
   m_ObjectHideFlags: 0
