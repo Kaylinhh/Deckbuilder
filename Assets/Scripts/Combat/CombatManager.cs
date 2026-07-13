@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using System.Linq;
 
 public class CombatManager : MonoBehaviour
 {
@@ -17,6 +17,9 @@ public class CombatManager : MonoBehaviour
 
     private CombatContext _context;
     private bool _isOver = false;
+
+    public static event Action OnPlayerAttack;
+    public static event Action OnEnemyAttack;
 
     private void Awake()
     {
@@ -103,8 +106,13 @@ public class CombatManager : MonoBehaviour
     private void ExecuteEnemyIntent()
     {
         enemy.ExecuteIntent(_context);
+        
+        if (enemy.CurrentSlot.intents.Any(i => i is AttackIntent))
+            OnEnemyAttack?.Invoke();
+            
         CheckCombatEnd();
-        OnStateChanged?.Invoke(_context);
+        if (!_isOver)
+            OnStateChanged?.Invoke(_context);
     }
 
     private void CheckCombatEnd()
@@ -136,8 +144,12 @@ public class CombatManager : MonoBehaviour
         player.currentAP -= card.cost;
         card.Play(_context);
         deckManager.DiscardCard(card);
+        
+        if (card.effects.Any(e => e is DamageEffect))
+            OnPlayerAttack?.Invoke();
+            
         CheckCombatEnd();
-        OnStateChanged?.Invoke(_context);
+        if (!_isOver)
+            OnStateChanged?.Invoke(_context);
     }
-
 }

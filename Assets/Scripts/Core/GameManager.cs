@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
     public void ShowCombat(bool isBoss = false)
     {
         _currentCombatIsBoss = isBoss;
+        TooltipManager.Instance.Hide();
         mapPanel.SetActive(false);
         combatPanel.SetActive(true);
         OnCombatShown?.Invoke();
