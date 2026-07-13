@@ -4,11 +4,15 @@ using UnityEngine;
 public class DamageEffect : CardEffect
 {
     public int damage;
+    public int hits;
 
     public override void Execute(CombatContext context)
     {
         int modifiedDamage = context.player.GetModifiedDamage(damage);
-        context.enemy.TakeDamage(modifiedDamage);
+        for (int i = 0; i < hits; i++)
+        {
+            context.enemy.TakeDamage(modifiedDamage);
+        }
     }
 
     public override string GetDescription(CombatContext context)

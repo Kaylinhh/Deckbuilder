@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f5119c876f89f47a8bd853d111d0e3, type: 3}
-  m_Name: StrengthCardEffect_2
-  m_EditorClassIdentifier: Assembly-CSharp::StrengthCardEffect
-  strengthStatus: {fileID: 11400000, guid: 771e2ed34b036794497541a64247985a, type: 2}
+  m_Script: {fileID: 11500000, guid: 9b9a327492743b44d8323dd48b764418, type: 3}
+  m_Name: VulnerableCardEffect_2
+  m_EditorClassIdentifier: Assembly-CSharp::VulnerableCardEffect
+  vulnerableStatus: {fileID: 11400000, guid: b25b911100eb8e54b9f86d78b65f6cd7, type: 2}
   duration: 2

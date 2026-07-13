@@ -17,4 +17,10 @@ public abstract class StatusEffect : ScriptableObject
     {
         return statusName;;
     }
+
+    public virtual int ModifyIncomingDamage(int damage)
+    {
+        return damage;
+    }
+
 }

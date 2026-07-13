@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88f5119c876f89f47a8bd853d111d0e3, type: 3}
-  m_Name: StrengthCardEffect_2
+  m_Name: StrengthCardEffect_1
   m_EditorClassIdentifier: Assembly-CSharp::StrengthCardEffect
   strengthStatus: {fileID: 11400000, guid: 771e2ed34b036794497541a64247985a, type: 2}
-  duration: 2
+  duration: 1

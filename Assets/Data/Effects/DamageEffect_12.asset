@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DamageEffect_12
   m_EditorClassIdentifier: Assembly-CSharp::DamageEffect
   damage: 12
+  hits: 1

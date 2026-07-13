@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ae7c4d8e2fcecc4892efdf435568ac7, type: 3}
-  m_Name: Fury
+  m_Name: Lionheart
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Fury
+  cardName: Lionheart
   artwork: {fileID: 0}
-  cost: 0
+  cost: 2
   effects:
-  - {fileID: 11400000, guid: 6ae3caf5039e4774f911de8590b1bed2, type: 2}
-  description: Gain 2 Strength for 1 turn
+  - {fileID: 11400000, guid: b2bfb402edb91964895d8137405c5971, type: 2}
+  - {fileID: 11400000, guid: 5a3fac972284feb4698ac099e6b1a31b, type: 2}
+  description: 

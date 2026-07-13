@@ -3517,12 +3517,15 @@ MonoBehaviour:
   cardPrefab: {fileID: 2861366760622908631, guid: 6b896d360c8a2454782e2e4aedf4b6eb, type: 3}
   cardRewardPanel: {fileID: 1006011017}
   cardPool:
-  - {fileID: 11400000, guid: 8f1a8173896d449458c1bfa8eb7eef8b, type: 2}
-  - {fileID: 11400000, guid: ce0c79e30f9603242a693b86c65d2cbd, type: 2}
+  - {fileID: 11400000, guid: 5a14fe87dc80fb3408d77040fa522ca3, type: 2}
+  - {fileID: 11400000, guid: 95616aa58f536344bbc9c263c26da3b3, type: 2}
+  - {fileID: 11400000, guid: 5083aea2b4a6ebd4f82cfd299cb45802, type: 2}
   - {fileID: 11400000, guid: 9ba0edd86fb5d7e409d792c5aaca5d53, type: 2}
-  - {fileID: 11400000, guid: 36540cfc24a614844aa8687852127297, type: 2}
-  - {fileID: 11400000, guid: f23997f747054e04b9cfa4595c44d4a6, type: 2}
-  - {fileID: 11400000, guid: f78e0d5445c48c344b969162d857013e, type: 2}
+  - {fileID: 11400000, guid: ebe82db6dbd4e1445bc6723502647d3f, type: 2}
+  - {fileID: 11400000, guid: d5635cd04a1fc4348a6c74d4839268c1, type: 2}
+  - {fileID: 11400000, guid: 15abf7262a20f464386a85c14a19fc55, type: 2}
+  - {fileID: 11400000, guid: 224eb5fe172131648ae01195c9c6b52d, type: 2}
+  - {fileID: 11400000, guid: 99d6ab947480011498ab53838ddeeba7, type: 2}
 --- !u!4 &647002493
 Transform:
   m_ObjectHideFlags: 0

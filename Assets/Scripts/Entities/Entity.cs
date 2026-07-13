@@ -12,12 +12,13 @@ public class Entity : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        foreach (StatusEffect status in activeStatuses)
+            amount = status.ModifyIncomingDamage(amount);
+            
         int remaining = amount - currentBlock;
         currentBlock = Mathf.Max(0, currentBlock - amount);
         if (remaining > 0)
-        {
             currentHP = Mathf.Max(0, currentHP - remaining);
-        }
     }
 
     public void GainBlock(int amount)
