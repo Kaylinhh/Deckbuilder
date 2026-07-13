@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AttackIntent_2x4
   m_EditorClassIdentifier: Assembly-CSharp::AttackIntent
   description: Attack 8
-  icon: {fileID: -2413806693520163455, guid: 0f484ebb29e3d6a45a175567cd203e34, type: 3}
+  icon: {fileID: 21300000, guid: 0f484ebb29e3d6a45a175567cd203e34, type: 3}
   damage: 4
   hits: 2
